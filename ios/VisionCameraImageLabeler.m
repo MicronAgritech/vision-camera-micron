@@ -28,7 +28,7 @@
   return labeler;
 }
 
-static inline id labelImage(Frame* frame, NSArray* arguments) {
+static inline id autoStart(Frame* frame, NSArray* arguments) {
   MLKVisionImage *image = [[MLKVisionImage alloc] initWithBuffer:frame.buffer];
   image.orientation = frame.orientation; // <-- TODO: is mirrored?
 
@@ -46,6 +46,6 @@ static inline id labelImage(Frame* frame, NSArray* arguments) {
   return results;
 }
 
-VISION_EXPORT_FRAME_PROCESSOR(labelImage)
+VISION_EXPORT_FRAME_PROCESSOR(autoStart)
 
 @end

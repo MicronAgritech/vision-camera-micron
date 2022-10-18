@@ -35,16 +35,8 @@
     "ios",
     "android"
   ],
-  "repository": "https://github.com/mrousavy/vision-camera-image-labeler",
+  "repository": "https://github.com/MicronAgritech/vision-camera-micron",
   "author": "Ryan Williams (Micron Agritech)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/mrousavy/react-native-vision-camera/issues"
-  },
-  "homepage": "https://github.com/mrousavy/react-native-vision-camera#readme",
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
-  },
   "devDependencies": {
     "@react-native-community/eslint-config": "^3.0.0",
     "@release-it/conventional-changelog": "^2.0.0",
