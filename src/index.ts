@@ -1,4 +1,4 @@
-/* globals __labelImage */
+/* globals __autoStart */
 import type { Frame } from 'react-native-vision-camera';
 
 interface ImageLabel {

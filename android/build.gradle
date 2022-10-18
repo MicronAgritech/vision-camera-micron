@@ -55,6 +55,6 @@ dependencies {
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
     api project(":react-native-vision-camera")
-    implementation "androidx.camera:camera-core:1.1.0-alpha06"
+    implementation "androidx.camera:camera-core:1.1.0-alpha08"
     implementation 'com.google.mlkit:image-labeling-custom:17.0.1'
 }
