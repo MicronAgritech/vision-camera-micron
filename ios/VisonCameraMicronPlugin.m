@@ -1,31 +1,31 @@
 //
-//  VisionCameraImageLabeler.m
-//  VisionCameraExample
+//  VisonCameraMicronPlugin.m
+//  VisonCameraMicronPlugin
 //
-//  Created by Marc Rousavy on 06.05.21.
 //
 
 #import <VisionCamera/FrameProcessorPlugin.h>
 #import <VisionCamera/Frame.h>
 #import <MLKit.h>
 
-// Example for an Objective-C Frame Processor plugin
 
-@interface QRCodeFrameProcessorPluginObjC : NSObject
+@interface VisionCameraMicronPluginObjC : NSObject
 
 + (MLKImageLabeler*) labeler;
 
 @end
 
-@implementation QRCodeFrameProcessorPluginObjC
+@implementation VisionCameraMicronPluginObjC
 
 + (MLKImageLabeler*) labeler {
-  static MLKImageLabeler* labeler = nil;
-  if (labeler == nil) {
-    MLKImageLabelerOptions* options = [[MLKImageLabelerOptions alloc] init];
-    labeler = [MLKImageLabeler imageLabelerWithOptions:options];
+  static MLKImageLabeler* imageLabeler = nil;
+  if (imageLabeler == nil) {  
+    MLKLocalModel *localModel = [[MLKLocalModel alloc] initWithPath:localModelFilePath]; // Need to add local model file path here!
+    MLKCustomImageLabelerOptions *options = [[MLKCustomImageLabelerOptions alloc] initWithLocalModel:localModel];
+    options.confidenceThreshold = @(0.0);
+    imageLabeler = [MLKImageLabeler imageLabelerWithOptions:options];
   }
-  return labeler;
+  return imageLabeler;
 }
 
 static inline id autoStart(Frame* frame, NSArray* arguments) {
@@ -33,7 +33,7 @@ static inline id autoStart(Frame* frame, NSArray* arguments) {
   image.orientation = frame.orientation; // <-- TODO: is mirrored?
 
   NSError* error;
-  NSArray<MLKImageLabel*>* labels = [[QRCodeFrameProcessorPluginObjC labeler] resultsInImage:image error:&error];
+  NSArray<MLKImageLabel*>* labels = [[VisionCameraMicronPluginObjC labeler] resultsInImage:image error:&error];
 
   NSMutableArray* results = [NSMutableArray arrayWithCapacity:labels.count];
   for (MLKImageLabel* label in labels) {
