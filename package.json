@@ -7,6 +7,8 @@
   "types": "lib/typescript/index.d.ts",
   "react-native": "src/index",
   "source": "src/index",
+  "homepage": "https://micronagritech.com",
+  "license": "ANY",
   "files": [
     "src",
     "lib",
