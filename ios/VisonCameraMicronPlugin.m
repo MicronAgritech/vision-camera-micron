@@ -19,6 +19,8 @@
 
 + (MLKImageLabeler*) labeler {
   static MLKImageLabeler* imageLabeler = nil;
+  NSString *localModelFilePath = [[NSBundle mainBundle] pathForResource:@"autostart" 
+                                                                    ofType:@"tflite"];
   if (imageLabeler == nil) {  
     MLKLocalModel *localModel = [[MLKLocalModel alloc] initWithPath:localModelFilePath]; // Need to add local model file path here!
     MLKCustomImageLabelerOptions *options = [[MLKCustomImageLabelerOptions alloc] initWithLocalModel:localModel];
